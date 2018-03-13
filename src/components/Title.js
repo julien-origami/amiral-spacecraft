@@ -5,7 +5,7 @@ class App extends Component {
      render() {
          return (
              <div className='title'>
-                 Super Space Fleet
+                 AMIRAL SPACE CRAFT
              </div>
          )
      }

@@ -1,17 +1,12 @@
 import React, { Component } from 'react'
 import rocket from '../images/rocket.svg'
+import SpaceCraft from './SpaceCraft'
 
 class App extends Component {
 
      render() {
-         console.log(this.props)
          const fleet = this.props.data.fleet.map((s, i) => (
-             <div key={i} className='spacecraft'>
-                <img src={rocket} className='rocket'/>
-                <p>{ s.name }</p>
-                <p>{ s.lastconnection }</p>
-                <p>{ s.lasttoken }</p>
-             </div>
+             <SpaceCraft key={i} spacecraft={s} />
          ))
          return (
              <div className='content'>
@@ -32,7 +27,8 @@ class App extends Component {
                          </svg>
                      </nav>
                  </div>
-                 <div>
+                 <div className='token'>LAST TOKEN : { this.props.data.token }</div>
+                 <div style={{ marginTop: '30px' }}>
                     { fleet }
                  </div>
              </div>

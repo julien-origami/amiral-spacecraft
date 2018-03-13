@@ -21,14 +21,12 @@ const Db = {
     queryAll: (text, params, then) => {
         return Db.connection.all(text, params, (err, rows) => {
             showError(err)
-            console.log('ROWS => ', rows)
             then(rows)
         })
     },
     queryFirst: (text, params, then) => {
         return Db.connection.get(text, params, (err, row) => {
             showError(err)
-            console.log('ROW => ', row)
             then(row)
         })
     },

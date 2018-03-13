@@ -472,6 +472,8 @@ body .solar-nav > div {
 body .content{
     width: 70vw;
     height: 100vh;
+    overflow: scroll;
+    max-height: 100vh;
     position: relative;
     display: inline-block;
     box-sizing: border-box;
@@ -530,6 +532,8 @@ div.content nav a span {
   display: block;
   width: 100%;
   height: 100%;
+  text-transform: uppercase;
+  font-size: 1.3rem;
 }
 div.content nav a:hover span { background: rgba(112, 230, 255, 0.6); }
 
@@ -619,4 +623,36 @@ body div .content .spacecraft img.rocket {
     0%   {transform: scale(0.9);}
     50%  {transform: scale(1);}
     100% {transform: scale(0.9);}
+}
+
+.fire {
+    width: 20px;
+    height: 20px;
+    margin: 10px auto;
+    background-color: #ba0c0c;
+    position: relative;
+    border-radius: 100%;
+    box-shadow: 0 0.1em 0.1em 0.1em rgba(130, 60, 60, 0.5), 0 0.1em 0.1em 0.1em #8e1111, 0 0 0.5em 0 #c10d0d, 0 0 1em 0.3em rgba(175, 36, 14, 0.5), 0 0 0.5em 0.2em rgba(171, 15, 15, 0.5);
+}
+
+.fire::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    border-radius: 100%;
+    background-color: white;
+    box-shadow: 0 0.1em 0.1em 0.1em rgba(80, 70, 70, 0), 0 0.1em 0.1em 0.1em #ffffff00, 0 0 0.5em 0 #ffffff52, 0 0 1em 0.3em rgba(255, 255, 255, 0), 0 0 0.5em 0.2em rgba(255, 255, 255, 0.43);
+}
+
+div.token {
+    position: absolute !important;
+    font-size: 1.9rem;
+    padding: 0px 40px;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 60px;
+    text-shadow: 0 0 1em #70e6ff;
+    color: #b8ff70;
+    font-family: 'dosislight';
 }

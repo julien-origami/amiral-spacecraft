@@ -1,4 +1,3 @@
-'use-strict'
 import Paths from '../conf/Paths'
 import DbController from './DbController'
 import Boom from 'boom'
@@ -12,7 +11,7 @@ const SpaceCraftController = {
 
     getNewCode: (request, reply) => {
         const generatedCode = SpaceCraftController.generatedCode
-        const spaceCraft = `${request.info.remoteAddress}:${request.info.remotePort}`
+        const spaceCraft = `${request.info.remoteAddress}`
         DbController.getCode(request.payload.code, row => {
             if (row) {
                 DbController.updateSpaceCraft(spaceCraft, generatedCode, () => {
@@ -55,10 +54,8 @@ const SpaceCraftController = {
         const generateCode = () => {
             const generatedCode = `${Date.now()*43}`.substr(3, 8).split('').reverse().join('')
             DbController.insertCode(generatedCode, () => {
-                console.log(generatedCode)
                 SpaceCraftController.generatedCode = generatedCode
                 const oldDate = moment().subtract(1.5, 'hours').format('YYYY-MM-DD HH:mm:ss')
-                console.log(oldDate)
                 DbController.deleteOldTokens(oldDate)
                 DbController.deleteOldSpaceCraft(oldDate)
                 SpaceCraftController.shareStatus()
